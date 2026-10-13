@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>David Valdivia Guillén · Desarrollador Full Stack</title>
+<meta name="description" content="Portfolio de David Valdivia Guillén, desarrollador Full Stack. Java, Node.js, TypeScript, Angular, React Native y Flutter. Proyectos: Panel ITSM, Foco, RecallApp y automatización con n8n e IA.">
+<meta property="og:title" content="David Valdivia Guillén · Desarrollador Full Stack">
+<meta property="og:description" content="Proyectos de desarrollo Full Stack: Panel ITSM, Foco, RecallApp y automatización con n8n e IA.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#eef1f4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #eef1f4;
+  --surface: #f8fafb;
+  --ink: #14202b;
+  --muted: #55636f;
+  --line: #cbd3da;
+  --accent: #b8420a;
+  --accent-soft: #f3ddd0;
+  --on-accent: #ffffff;
+  --ok: #1f7a45;
+  --display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1820;
+    --surface: #14222c;
+    --ink: #e4ebf0;
+    --muted: #93a4b1;
+    --line: #2a3b48;
+    --accent: #ffa94d;
+    --accent-soft: #3a2a17;
+    --on-accent: #1a1006;
+    --ok: #5fd08a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1820;
+  --surface: #14222c;
+  --ink: #e4ebf0;
+  --muted: #93a4b1;
+  --line: #2a3b48;
+  --accent: #ffa94d;
+  --accent-soft: #3a2a17;
+  --on-accent: #1a1006;
+  --ok: #5fd08a;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-inline: 20px;
+}
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1040px; margin-inline: auto; }
+.mono { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+/* cabecera */
+header.top {
+  display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; justify-content: space-between;
+  padding-block: 20px; border-bottom: 1px solid var(--line);
+}
+.brand { font-family: var(--display); font-weight: 700; font-size: 22px; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; }
+nav { display: flex; flex-wrap: wrap; gap: 6px 24px; }
+nav a { font-family: var(--mono); font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; color: var(--muted); padding-block: 4px; border-bottom: 2px solid transparent; }
+nav a:hover { color: var(--ink); border-color: var(--accent); }
+
+/* presentación */
+.hero { padding-block: 64px 48px; }
+.hero h1 {
+  font-family: var(--display); font-weight: 700; text-transform: uppercase;
+  font-size: clamp(44px, 9vw, 96px); line-height: 0.95; letter-spacing: 0.005em;
+  margin: 12px 0 24px; max-width: 14ch; text-wrap: balance;
+}
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p.lead { max-width: 58ch; font-size: 19px; color: var(--ink); margin: 0 0 32px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 44px; }
+.btn {
+  display: inline-block; font-family: var(--mono); font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 12px 18px; border: 1.5px solid var(--ink); text-decoration: none; background: transparent; color: var(--ink); cursor: pointer; border-radius: 2px;
+}
+.btn:hover { background: var(--ink); color: var(--bg); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn.primary:hover { filter: brightness(1.08); background: var(--accent); color: var(--on-accent); }
+
+.readout { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0; margin: 0; border-top: 1px solid var(--line); }
+.readout div { padding: 16px 20px 16px 0; }
+.readout dt { margin: 0 0 4px; }
+.readout dd { margin: 0; font-weight: 500; }
+
+/* secciones */
+section { padding-block: 64px; border-top: 1px solid var(--line); }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 20px; margin-bottom: 36px; }
+.sec-head h2 { font-family: var(--display); font-weight: 700; text-transform: uppercase; font-size: clamp(32px, 5vw, 48px); line-height: 1; margin: 0; letter-spacing: 0.01em; }
+
+/* sobre mí */
+.about { display: grid; gap: 40px 64px; grid-template-columns: 1fr; }
+@media (min-width: 820px) { .about { grid-template-columns: 1.15fr 1fr; } }
+.about p { margin: 0 0 16px; max-width: 60ch; }
+.timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
+.timeline li { position: relative; padding: 0 0 22px 22px; }
+.timeline li::before { content: ""; position: absolute; left: -7px; top: 7px; width: 12px; height: 12px; background: var(--bg); border: 2px solid var(--accent); border-radius: 50%; }
+.timeline li.now::before { background: var(--accent); }
+.timeline .what { display: block; font-weight: 600; line-height: 1.35; }
+.timeline .where { color: var(--muted); font-size: 15px; }
+
+/* proyectos */
+.project { display: grid; gap: 20px 48px; padding-block: 36px; border-top: 1px solid var(--line); grid-template-columns: 1fr; }
+.project:first-of-type { border-top: 0; padding-top: 0; }
+@media (min-width: 820px) { .project { grid-template-columns: 0.85fr 1.15fr; } }
+.project h3 { font-family: var(--display); font-weight: 700; font-size: 34px; line-height: 1.05; margin: 8px 0 12px; text-transform: uppercase; letter-spacing: 0.01em; }
+.project p { margin: 0 0 14px; max-width: 56ch; }
+.pill { display: inline-block; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }
+.pill.live { color: var(--ok); border-color: var(--ok); }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0 0; padding: 0; list-style: none; }
+.chips li { font-family: var(--mono); font-size: 12.5px; padding: 4px 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 2px; }
+.links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; }
+.link { display: inline-block; font-family: var(--mono); font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
+.link:hover { color: var(--accent); }
+
+/* diagrama de flujo */
+.flow { align-self: start; background: var(--surface); border: 1px solid var(--line); padding: 20px; border-radius: 2px; }
+.flow .cap { display: block; margin-bottom: 14px; }
+.flow ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.node { border: 1.5px solid var(--ink); padding: 8px 12px; font-size: 15px; line-height: 1.3; background: var(--bg); }
+.node small { display: block; font-family: var(--mono); font-size: 11.5px; color: var(--muted); letter-spacing: 0.03em; margin-top: 2px; }
+.node.hot { border-color: var(--accent); background: var(--accent-soft); }
+.stage { display: grid; gap: 6px; }
+.arrow { text-align: center; color: var(--accent); font-family: var(--mono); line-height: 1.2; padding-block: 6px; }
+.arrow::before { content: "\2193"; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+
+/* más trabajo */
+.more { display: grid; gap: 28px 48px; grid-template-columns: 1fr; padding-top: 12px; }
+@media (min-width: 820px) { .more { grid-template-columns: 1fr 1fr; } }
+.more h4 { font-family: var(--display); font-size: 24px; text-transform: uppercase; margin: 0 0 6px; }
+.more p { margin: 0; color: var(--muted); max-width: 52ch; }
+
+/* capturas de proyectos */
+.project > .gallery { grid-column: 1 / -1; display: grid; gap: 24px; grid-template-columns: 1fr; margin-top: 8px; }
+@media (min-width: 820px) { .project > .gallery { grid-template-columns: 1fr 1fr; } }
+.gallery figure { margin: 0; }
+.gallery .wide { grid-column: 1 / -1; }
+.gallery img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 2px; background: var(--surface); }
+.gallery figcaption { font-family: var(--mono); font-size: 12px; letter-spacing: 0.03em; color: var(--muted); margin-top: 8px; }
+
+/* tecnologías */
+.stack { display: grid; gap: 36px 40px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.stack h3 { font-family: var(--display); font-size: 26px; text-transform: uppercase; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); }
+.stack ul { list-style: none; margin: 0; padding: 0; }
+.stack li { padding: 7px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; }
+.stack li span:last-child { color: var(--muted); font-family: var(--mono); font-size: 12px; text-align: right; }
+.certs { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 10px; }
+.certs .pill { color: var(--ink); border-color: var(--ink); }
+
+/* contacto */
+.contact h2 { font-family: var(--display); font-weight: 700; text-transform: uppercase; font-size: clamp(38px, 7vw, 72px); line-height: 0.98; margin: 10px 0 20px; max-width: 16ch; text-wrap: balance; }
+.contact p { max-width: 54ch; margin: 0 0 28px; }
+.contact-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; max-width: 620px; border-top: 1px solid var(--line); }
+.contact-list li { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.contact-list .mono { width: 90px; }
+.contact-list a, .contact-list .val { font-weight: 500; overflow-wrap: anywhere; flex: 1 1 200px; }
+.copy { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; background: none; border: 1px solid var(--line); color: var(--ink); padding: 5px 10px; cursor: pointer; border-radius: 2px; }
+.copy:hover { border-color: var(--accent); color: var(--accent); }
+
+footer { padding-block: 28px 40px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+
+@media (max-width: 520px) {
+  body { font-size: 16px; }
+  .hero { padding-block: 40px 32px; }
+  section { padding-block: 48px; }
+  .pair { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#inicio">David Valdivia</a>
+    <nav aria-label="Secciones">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#tecnologias">Tecnologías</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <div class="hero">
+      <span class="mono">Desarrollador Full Stack · Sevilla</span>
+      <h1>Quince años en planta. Ahora <em>construyo el software.</em></h1>
+      <p class="lead">Soy técnico en Desarrollo de Aplicaciones Multiplataforma. Trabajo con Java y Node.js/TypeScript en el backend, y con Angular y React en el frontend. Vengo de supervisar turnos de una planta química con DeltaV y SCADA, y de ahí traigo lo que más me sirve programando: sistemas complejos, incidencias reales y mejora continua.</p>
+      <div class="actions">
+        <a class="btn primary" href="#proyectos">Ver proyectos</a>
+        <a class="btn" href="#contacto">Contactar</a>
+      </div>
+      <dl class="readout">
+        <div><dt class="mono">Puesto</dt><dd>Desarrollador Full Stack, Informa TD</dd></div>
+        <div><dt class="mono">Formación</dt><dd>Técnico DAM · Campus Cámara Sevilla</dd></div>
+        <div><dt class="mono">Backend</dt><dd>Java · Node.js · TypeScript · SQL</dd></div>
+        <div><dt class="mono">Frontend</dt><dd>Angular 17 · React · React Native · Flutter</dd></div>
+      </dl>
+    </div>
+
+    <section id="sobre-mi" aria-labelledby="h-sobre">
+      <div class="sec-head"><h2 id="h-sobre">Sobre mí</h2><span class="mono">Trayectoria</span></div>
+      <div class="about">
+        <div>
+          <p>Durante quince años coordiné turnos 24/7 en una planta química, con software de control industrial, análisis de datos en tiempo real y resolución de incidencias técnicas. En 2024 decidí cambiar de rumbo y estudié DAM.</p>
+          <p>Hoy desarrollo APIs REST, servicios de integración y aplicaciones completas, trabajo con metodologías ágiles (Scrum) y me muevo con Docker, Git y bases de datos relacionales. Soy proactivo, aprendo rápido y me gusta trabajar en equipo.</p>
+          <p>Además de mi trabajo, construyo proyectos propios: una app móvil desplegada en producción y automatizaciones con IA.</p>
+        </div>
+        <ol class="timeline" aria-label="Cronología">
+          <li><span class="mono">2008 – 2023</span><span class="what">Operador de Planta Química</span><span class="where">Cobres Las Cruces · DeltaV y SCADA</span></li>
+          <li><span class="mono">2024 – 2026</span><span class="what">Técnico en Desarrollo de Aplicaciones Multiplataforma</span><span class="where">Campus Cámara Sevilla</span></li>
+          <li><span class="mono">2025</span><span class="what">Formación en empresa</span><span class="where">EUSA-Lab · Campus Cámara de Sevilla</span></li>
+          <li class="now"><span class="mono">2026</span><span class="what">Desarrollador Full Stack</span><span class="where">Informa TD</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="proyectos" aria-labelledby="h-proy">
+      <div class="sec-head"><h2 id="h-proy">Proyectos</h2><span class="mono">Trabajo destacado</span></div>
+
+      <article class="project">
+        <div>
+          <div class="meta"><span class="pill">2025</span><span class="pill">Full stack</span><span class="pill">Empresa</span></div>
+          <h3>Panel ITSM unificado</h3>
+          <p>Aplicación empresarial que reúne en una sola pantalla las incidencias de Redmine y Mantis Bug Tracker, en tiempo real. Incluye filtros dinámicos, indicadores SLA y branding corporativo.</p>
+          <p>La lógica de negocio, en TypeScript, normaliza los estados de cada herramienta y maneja tanto SOAP como REST.</p>
+          <ul class="chips" aria-label="Tecnologías">
+            <li>Angular 17</li><li>Node.js</li><li>TypeScript</li><li>Express</li><li>MySQL 8</li><li>Docker</li><li>REST / SOAP</li>
+          </ul>
+          <div class="links">
+            <a class="link" href="https://github.com/davidvaldiviaguillen/dashboard-itsm" target="_blank" rel="noopener">Ver en GitHub</a>
+          </div>
+        </div>
+        <div class="flow" role="img" aria-label="Flujo: Redmine y Mantis alimentan a la API Node.js, que guarda en MySQL y sirve al panel Angular">
+          <span class="mono cap">Flujo de datos</span>
+          <ol>
+            <li class="stage"><div class="pair"><div class="node">Redmine<small>REST</small></div><div class="node">Mantis BT<small>SOAP</small></div></div></li>
+            <li class="arrow"></li>
+            <li class="stage"><div class="node hot">API Node.js + Express<small>Normaliza estados · filtros · SLA</small></div></li>
+            <li class="arrow"></li>
+            <li class="stage"><div class="node">MySQL 8<small>Docker Compose</small></div></li>
+            <li class="arrow"></li>
+            <li class="stage"><div class="node">Panel Angular 17<small>Incidencias en tiempo real</small></div></li>
+          </ol>
+        </div>
+        <div class="gallery" aria-label="Capturas del panel ITSM">
+          <figure class="wide">
+            <img src="img/itsm-panel-listado.webp" width="1200" height="577" loading="lazy" alt="Panel ITSM con el listado de incidencias de Redmine y Mantis, con estado, prioridad, SLA y asignación">
+            <figcaption>Listado unificado de incidencias. Datos de prueba.</figcaption>
+          </figure>
+          <figure>
+            <img src="img/itsm-panel-filtros.webp" width="1200" height="351" loading="lazy" alt="Filtros del panel ITSM por fecha, origen, estado y prioridad">
+            <figcaption>Filtros dinámicos por fecha, origen, estado y prioridad.</figcaption>
+          </figure>
+          <figure>
+            <img src="img/redmine-listado.webp" width="1200" height="358" loading="lazy" alt="Listado de peticiones en Redmine, una de las fuentes que integra el panel">
+            <figcaption>Origen 1: Redmine.</figcaption>
+          </figure>
+          <figure>
+            <img src="img/mantis-listado.webp" width="1200" height="450" loading="lazy" alt="Listado de incidencias en Mantis Bug Tracker, la otra fuente que integra el panel">
+            <figcaption>Origen 2: Mantis Bug Tracker.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="project">
+        <div>
+          <div class="meta"><span class="pill">2025</span><span class="pill">Móvil</span><span class="pill live">En producción</span></div>
+          <h3>Foco · gestión de tareas</h3>
+          <p>App móvil de tareas, del estilo de Todoist, con backend propio en Node.js y Express. Está desplegada en producción y se distribuye como APK de Android.</p>
+          <ul class="chips" aria-label="Tecnologías">
+            <li>React Native</li><li>Expo</li><li>Node.js</li><li>Express</li><li>MongoDB Atlas</li><li>Render</li><li>EAS Build</li>
+          </ul>
+          <div class="links">
+            <a class="link" href="https://github.com/davidvaldiviaguillen/Foco" target="_blank" rel="noopener">Ver en GitHub</a>
+            <a class="link" href="https://github.com/davidvaldiviaguillen/Foco/releases" target="_blank" rel="noopener">Descargar APK</a>
+          </div>
+        </div>
+        <div class="flow" role="img" aria-label="Flujo: app React Native con Expo, API Node.js en Render, base de datos MongoDB Atlas y APK con EAS Build">
+          <span class="mono cap">Arquitectura</span>
+          <ol>
+            <li class="stage"><div class="node">App móvil<small>React Native · Expo</small></div></li>
+            <li class="arrow"></li>
+            <li class="stage"><div class="node hot">API Node.js + Express<small>Desplegada en Render</small></div></li>
+            <li class="arrow"></li>
+            <li class="stage"><div class="node">MongoDB Atlas</div></li>
+            <li class="arrow"></li>
+            <li class="stage"><div class="node">APK de Android<small>EAS Build</small></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="project">
+        <div>
+          <div class="meta"><span class="pill">2024</span><span class="pill">Automatización</span><span class="pill">IA</span></div>
+          <h3>Automatización con n8n + IA</h3>
+          <p>Workflows que consultan APIs de viajes, generan el contenido con modelos de lenguaje y lo publican solos en un canal de Telegram.</p>
+          <ul class="chips" aria-label="Tecnologías">
+            <li>n8n</li><li>Google Gemini</li><li>Groq API</li><li>Telegram Bot API</li><li>REST APIs</li>
+          </ul>
+          <div class="links">
+            <!-- Cambia la URL por el repositorio exacto de este proyecto en GitHub -->
+            <a class="link" href="https://github.com/davidvaldiviaguillen?tab=repositories" target="_blank" rel="noopener">Ver en GitHub</a>
+          </div>
+        </div>
+        <div class="flow" role="img" aria-label="Flujo: APIs de viajes, workflow n8n, modelos Gemini y Groq, canal de Telegram">
+          <span class="mono cap">Workflow</span>
+          <ol>
+            <li class="stage"><div class="node">APIs de viajes<small>REST</small></div></li>
+            <li class="arrow"></li>
+            <li class="stage"><div class="node hot">Workflow n8n<small>Orquestación</small></div></li>
+            <li class="arrow"></li>
+            <li class="stage"><div class="pair"><div class="node">Gemini</div><div class="node">Groq</div></div></li>
+            <li class="arrow"></li>
+            <li class="stage"><div class="node">Canal de Telegram<small>Publicación automática</small></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <div class="more">
+        <div>
+          <h4>RecallApp · Flutter</h4>
+          <p>App móvil de tareas con fotos adjuntas e informes de las tareas creadas, hecha con Flutter y Dart. Es la misma idea que Foco, resuelta con otra tecnología.</p>
+          <div class="links">
+            <a class="link" href="https://github.com/davidvaldiviaguillen/RecallApp" target="_blank" rel="noopener">Ver en GitHub</a>
+          </div>
+        </div>
+        <div>
+          <h4>Formación en empresa · EUSA-Lab</h4>
+          <p>Programación en Java, maquetación con HTML y CSS, XML con transformaciones XSLT, y bases de datos relacionales con procedimientos almacenados, triggers y modelado.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tecnologias" aria-labelledby="h-tec">
+      <div class="sec-head"><h2 id="h-tec">Tecnologías</h2><span class="mono">Con lo que trabajo</span></div>
+      <div class="stack">
+        <div>
+          <h3>Backend</h3>
+          <ul>
+            <li><span>Java</span><span>POO · multithreading</span></li>
+            <li><span>Node.js / Express</span><span></span></li>
+            <li><span>TypeScript</span><span></span></li>
+            <li><span>Python</span><span></span></li>
+            <li><span>REST APIs</span><span></span></li>
+            <li><span>SOAP / XML / XSLT</span><span></span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Frontend</h3>
+          <ul>
+            <li><span>JavaScript</span><span>ES6+</span></li>
+            <li><span>TypeScript</span><span></span></li>
+            <li><span>HTML</span><span></span></li>
+            <li><span>Angular 17</span><span></span></li>
+            <li><span>React / React Native</span><span></span></li>
+            <li><span>Flutter / Dart</span><span></span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Datos y DevOps</h3>
+          <ul>
+            <li><span>MySQL / PostgreSQL / Oracle</span><span>SQL</span></li>
+            <li><span>MongoDB</span><span></span></li>
+            <li><span>Docker / Docker Compose</span><span></span></li>
+            <li><span>Git / GitHub</span><span></span></li>
+            <li><span>Kali Linux</span><span>ciberseguridad</span></li>
+            <li><span>NetBeans, VS Code</span><span></span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="certs" aria-label="Certificaciones">
+        <span class="pill">Certificado profesional de Google Cybersecurity</span>
+        <span class="pill">Desarrollo con IA: programa con agentes</span>
+      </div>
+    </section>
+
+    <section id="contacto" class="contact" aria-labelledby="h-con">
+      <span class="mono">Contacto</span>
+      <h2 id="h-con">Hablemos de tu próximo proyecto</h2>
+      <p>Busco un puesto donde seguir creciendo como desarrollador. Escríbeme por correo o LinkedIn y te respondo en cuanto pueda.</p>
+      <ul class="contact-list">
+        <li><span class="mono">Correo</span><span class="val" id="mail">dvgdavid1@gmail.com</span><button class="copy" type="button" id="copy-mail">Copiar</button></li>
+        <li><span class="mono">LinkedIn</span><a href="https://www.linkedin.com/in/david-valdivia-guill%C3%A9n" target="_blank" rel="noopener">linkedin.com/in/david-valdivia-guillén</a></li>
+        <li><span class="mono">GitHub</span><a href="https://github.com/davidvaldiviaguillen" target="_blank" rel="noopener">github.com/davidvaldiviaguillen</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <span class="mono">David Valdivia Guillén</span>
+    <span class="mono">Sevilla, España</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-mail');
+  var mail = document.getElementById('mail');
+  if (!btn || !mail) return;
+  btn.addEventListener('click', function () {
+    var text = mail.textContent.trim();
+    function done() { btn.textContent = 'Copiado'; setTimeout(function () { btn.textContent = 'Copiar'; }, 1600); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(mail);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+    try {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>
