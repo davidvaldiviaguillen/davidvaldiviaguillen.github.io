@@ -159,6 +159,9 @@ section { padding-block: 64px; border-top: 1px solid var(--line); }
 .gallery .wide { grid-column: 1 / -1; }
 .gallery img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 2px; background: var(--surface); }
 .gallery figcaption { font-family: var(--mono); font-size: 12px; letter-spacing: 0.03em; color: var(--muted); margin-top: 8px; }
+.gallery.phones { grid-template-columns: repeat(2, 1fr); gap: 20px 16px; align-items: start; }
+@media (min-width: 820px) { .gallery.phones { grid-template-columns: repeat(4, 1fr); } }
+.gallery.phones img { border-radius: 14px; }
 
 /* tecnologías */
 .stack { display: grid; gap: 36px 40px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
@@ -310,6 +313,24 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); display: f
             <li class="stage"><div class="node">APK de Android<small>EAS Build</small></div></li>
           </ol>
         </div>
+        <div class="gallery phones" aria-label="Capturas de Foco en el móvil">
+          <figure>
+            <img src="img/foco-hoy.webp" width="378" height="827" loading="lazy" alt="Pantalla Hoy de Foco con las tareas pendientes del día, cada una con su color de prioridad">
+            <figcaption>Vista Hoy con las tareas del día.</figcaption>
+          </figure>
+          <figure>
+            <img src="img/foco-proyecto.webp" width="391" height="830" loading="lazy" alt="Lista de tareas de un proyecto llamado Trabajo, con descripción y prioridad por color">
+            <figcaption>Tareas agrupadas por proyecto.</figcaption>
+          </figure>
+          <figure>
+            <img src="img/foco-editar-tarea.webp" width="380" height="830" loading="lazy" alt="Pantalla de edición de una tarea con título, descripción, fecha límite, prioridad y proyecto">
+            <figcaption>Edición de tarea: prioridad, fecha y proyecto.</figcaption>
+          </figure>
+          <figure>
+            <img src="img/foco-nuevo-proyecto.webp" width="635" height="920" loading="lazy" alt="Creación de un nuevo proyecto con nombre y selector de color">
+            <figcaption>Creación de proyectos con color.</figcaption>
+          </figure>
+        </div>
       </article>
 
       <article class="project">
@@ -339,14 +360,46 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); display: f
         </div>
       </article>
 
-      <div class="more">
+      <article class="project">
         <div>
-          <h4>RecallApp · Flutter</h4>
-          <p>App móvil de tareas con fotos adjuntas e informes de las tareas creadas, hecha con Flutter y Dart. Es la misma idea que Foco, resuelta con otra tecnología.</p>
+          <div class="meta"><span class="pill">2025</span><span class="pill">Full stack</span><span class="pill">Móvil</span></div>
+          <h3>RecallApp · notas y tareas</h3>
+          <p>App para organizar notas por categorías, con tareas dentro de cada nota, imagen de portada e informes de tu contenido. Incluye inicio de sesión con contraseñas cifradas y recuperación de contraseña mediante token.</p>
+          <p>El cliente está hecho en Flutter y se comunica con un backend en Node.js que guarda los datos en MySQL.</p>
+          <ul class="chips" aria-label="Tecnologías">
+            <li>Flutter</li><li>Dart</li><li>Node.js</li><li>MySQL</li><li>bcrypt</li>
+          </ul>
           <div class="links">
             <a class="link" href="https://github.com/davidvaldiviaguillen/RecallApp" target="_blank" rel="noopener">Ver en GitHub</a>
           </div>
         </div>
+        <div class="flow" role="img" aria-label="Flujo: app Flutter, API Node.js y base de datos MySQL">
+          <span class="mono cap">Arquitectura</span>
+          <ol>
+            <li class="stage"><div class="node">App Flutter<small>Dart · notas, tareas e informes</small></div></li>
+            <li class="arrow"></li>
+            <li class="stage"><div class="node hot">API Node.js<small>Autenticación · recuperación de contraseña</small></div></li>
+            <li class="arrow"></li>
+            <li class="stage"><div class="node">MySQL<small>Usuarios, notas y categorías</small></div></li>
+          </ol>
+        </div>
+        <div class="gallery" aria-label="Capturas de RecallApp">
+          <figure class="wide">
+            <img src="img/recallapp-notas.webp" width="1200" height="597" loading="lazy" alt="Pantalla principal de RecallApp con las notas organizadas por categorías, cada una con su imagen de portada">
+            <figcaption>Notas organizadas por categorías. Datos de ejemplo.</figcaption>
+          </figure>
+          <figure>
+            <img src="img/recallapp-detalle.webp" width="1200" height="597" loading="lazy" alt="Detalle de una nota con su lista de tareas, algunas marcadas como hechas, y su planificación">
+            <figcaption>Nota con tareas que se marcan como hechas.</figcaption>
+          </figure>
+          <figure>
+            <img src="img/recallapp-informes.webp" width="571" height="510" loading="lazy" alt="Modal para generar informes de usuario o de administrador">
+            <figcaption>Generación de informes de usuario o de administrador.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <div class="more">
         <div>
           <h4>Formación en empresa · EUSA-Lab</h4>
           <p>Programación en Java, maquetación con HTML y CSS, XML con transformaciones XSLT, y bases de datos relacionales con procedimientos almacenados, triggers y modelado.</p>
